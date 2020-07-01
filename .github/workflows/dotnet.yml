@@ -24,4 +24,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: drop
-        path: ${{ env.GITHUB_WORKSPACE }}\SampleApp\bin\${{ env.CONFIGURATION }}
+        path: ${{ github.workspace }}\SampleApp\bin\${{ env.CONFIGURATION }}
