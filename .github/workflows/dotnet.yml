@@ -18,10 +18,10 @@ jobs:
     - name: Restore packages
       run: nuget restore ${{ env.SLN_NAME }}
     - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
+      uses: microsoft/setup-msbuild@v1
     - name: Build with MSBuild
       run: msbuild  ${{ env.SLN_NAME }} -p:Configuration=${{ env.CONFIGURATION }}
     - uses: actions/upload-artifact@v2
       with:
         name: drop
-        path: ${{ github.workspace }}\SampleApp\bin\${{ env.CONFIGURATION }}
+        path: ${{ github.workspace }}\SampleApp\bin
