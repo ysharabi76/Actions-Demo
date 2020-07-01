@@ -9,6 +9,7 @@ jobs:
 
     env:
       SLN_NAME: DemoSln.sln
+      CONFIGURATION: Release
       
     steps:
     - uses: actions/checkout@v1
@@ -19,4 +20,8 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
-      run: msbuild  ${{ env.SLN_NAME }} -p:Configuration=Release
+      run: msbuild  ${{ env.SLN_NAME }} -p:Configuration=${{ env.CONFIGURATION }}
+    - uses: actions/upload-artifact@v2
+      with:
+        name: drop
+        path: SampleApp\bin\${{ env.CONFIGURATION }}
